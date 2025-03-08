@@ -1,7 +1,10 @@
-
 import os
 import base64
 from groq import Groq
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 

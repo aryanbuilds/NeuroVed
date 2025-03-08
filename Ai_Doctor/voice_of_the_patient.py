@@ -5,7 +5,10 @@ from pydub import AudioSegment
 from io import BytesIO
 import shutil  
 from groq import Groq
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 

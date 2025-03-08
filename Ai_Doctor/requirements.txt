@@ -1,0 +1,8 @@
+gradio>=4.0.0
+groq>=0.18.0
+pydub>=0.25.1
+pyaudio>=0.2.13
+SpeechRecognition>=3.10.0
+elevenlabs>=0.2.24
+python-dotenv>=1.0.0
+gtts>=2.3.2

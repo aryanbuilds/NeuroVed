@@ -4,7 +4,10 @@ import subprocess
 from gtts import gTTS
 import elevenlabs
 from elevenlabs.client import ElevenLabs
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
 
 ELEVENLABS_API_KEY = os.environ.get("ELEVENLABS_API_KEY")
 if not ELEVENLABS_API_KEY:

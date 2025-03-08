@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, FileText, Users, Home, LogOut } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Dashboard() {
   const { user, isLoaded } = useUser();
   const router = useRouter();
+  const [gradioUrl, setGradioUrl] = useState("http://localhost:7860"); // Default Gradio URL
 
   if (!isLoaded) {
     return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
@@ -35,6 +37,31 @@ export default function Dashboard() {
           <h1 className="text-3xl font-bold text-[#2D336B]">Dashboard</h1>
           <p className="text-[#7886C7]">Welcome back, {user?.firstName || 'User'}</p>
         </div>
+
+        {/* Gradio AI Doctor Integration */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>AI Doctor with Vision & Voice</CardTitle>
+            <CardDescription>
+              Speak your symptoms and upload images for AI-powered medical analysis
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="w-full h-[600px] overflow-hidden rounded-lg border border-gray-200">
+              <iframe 
+                src={gradioUrl} 
+                width="100%" 
+                height="100%" 
+                frameBorder="0"
+                title="AI Doctor"
+                className="w-full h-full"
+              />
+            </div>
+            <p className="text-sm text-gray-500 mt-2">
+              Note: Make sure the Gradio server is running at {gradioUrl}
+            </p>
+          </CardContent>
+        </Card>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
