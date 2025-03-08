@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Toaster } from 'sonner';
-import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkProvider } from '@/components/ClerkProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
