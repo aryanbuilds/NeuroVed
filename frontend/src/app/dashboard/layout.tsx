@@ -1,17 +1,23 @@
 'use client';
 
+import React from 'react';
 import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'sonner';
-import { ClerkProvider } from '@/components/ClerkProvider';
-import VerticalTabs from '@/components/VerticalTabs';
+import { ClerkProvider } from '@clerk/nextjs';
 
-export default function DashboardLayout() {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="dashboard-layout">
-      <ThemeProvider attribute="class" defaultTheme="light">
-        <VerticalTabs />
-        <Toaster />
-      </ThemeProvider>
-    </div>
+    <ClerkProvider>
+      <div className="dashboard-layout">
+        <ThemeProvider attribute="class" defaultTheme="light">
+          {children}
+          <Toaster />
+        </ThemeProvider>
+      </div>
+    </ClerkProvider>
   );
 } 
