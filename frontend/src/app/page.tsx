@@ -158,7 +158,7 @@ export default function Home() {
               <Button
                 size="lg"
                 className="bg-[#2D336B] hover:bg-[#1E2245] text-white group"
-                onClick={() => router.push('/demo')}
+                onClick={() => router.push('/sign-in')}
               >
                 Start Free Trial
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

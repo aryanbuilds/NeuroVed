@@ -2,14 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Brain, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@clerk/nextjs';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const { isSignedIn } = useAuth();
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -18,6 +21,14 @@ const Navigation = () => {
     { href: '/technology', label: 'Technology' },
     { href: '/contact', label: 'Contact' },
   ];
+
+  const handleGetStarted = () => {
+    if (isSignedIn) {
+      router.push('/dashboard');
+    } else {
+      router.push('/sign-in');
+    }
+  };
 
   return (
     <header className="fixed w-full bg-white z-50 shadow-sm">
@@ -44,8 +55,11 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            <Button className="bg-[#2D336B] hover:bg-[#1E2245]">
-              Get Started
+            <Button 
+              className="bg-[#2D336B] hover:bg-[#1E2245]"
+              onClick={handleGetStarted}
+            >
+              {isSignedIn ? 'Dashboard' : 'Get Started'}
             </Button>
           </nav>
 
@@ -87,8 +101,14 @@ const Navigation = () => {
               </Link>
             ))}
             <div className="px-3 py-2">
-              <Button className="w-full bg-[#2D336B] hover:bg-[#1E2245]">
-                Get Started
+              <Button 
+                className="w-full bg-[#2D336B] hover:bg-[#1E2245]"
+                onClick={() => {
+                  setIsOpen(false);
+                  handleGetStarted();
+                }}
+              >
+                {isSignedIn ? 'Dashboard' : 'Get Started'}
               </Button>
             </div>
           </div>
