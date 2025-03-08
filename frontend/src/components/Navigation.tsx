@@ -6,13 +6,13 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Brain, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
-import { useAuth, UserButton } from '@clerk/nextjs';
+import { useAuth } from '@clerk/nextjs';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isSignedIn } = useAuth();
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -55,27 +55,12 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            
-            {isLoaded && (
-              isSignedIn ? (
-                <div className="flex items-center space-x-4">
-                  <Button 
-                    className="bg-[#2D336B] hover:bg-[#1E2245]"
-                    onClick={() => router.push('/dashboard')}
-                  >
-                    Dashboard
-                  </Button>
-                  <UserButton afterSignOutUrl="/" />
-                </div>
-              ) : (
-                <Button 
-                  className="bg-[#2D336B] hover:bg-[#1E2245]"
-                  onClick={handleGetStarted}
-                >
-                  Get Started
-                </Button>
-              )
-            )}
+            <Button 
+              className="bg-[#2D336B] hover:bg-[#1E2245]"
+              onClick={handleGetStarted}
+            >
+              {isSignedIn ? 'Dashboard' : 'Get Started'}
+            </Button>
           </nav>
 
           {/* Mobile menu button */}
@@ -115,37 +100,17 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            
-            {isLoaded && (
-              <div className="px-3 py-2">
-                {isSignedIn ? (
-                  <div className="flex flex-col space-y-2">
-                    <Button 
-                      className="w-full bg-[#2D336B] hover:bg-[#1E2245]"
-                      onClick={() => {
-                        setIsOpen(false);
-                        router.push('/dashboard');
-                      }}
-                    >
-                      Dashboard
-                    </Button>
-                    <div className="flex justify-center">
-                      <UserButton afterSignOutUrl="/" />
-                    </div>
-                  </div>
-                ) : (
-                  <Button 
-                    className="w-full bg-[#2D336B] hover:bg-[#1E2245]"
-                    onClick={() => {
-                      setIsOpen(false);
-                      handleGetStarted();
-                    }}
-                  >
-                    Get Started
-                  </Button>
-                )}
-              </div>
-            )}
+            <div className="px-3 py-2">
+              <Button 
+                className="w-full bg-[#2D336B] hover:bg-[#1E2245]"
+                onClick={() => {
+                  setIsOpen(false);
+                  handleGetStarted();
+                }}
+              >
+                {isSignedIn ? 'Dashboard' : 'Get Started'}
+              </Button>
+            </div>
           </div>
         </div>
       )}

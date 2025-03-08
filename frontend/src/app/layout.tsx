@@ -7,7 +7,6 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Toaster } from 'sonner';
 import { ClerkProvider } from '@/components/ClerkProvider';
-import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
