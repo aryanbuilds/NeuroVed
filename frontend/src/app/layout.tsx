@@ -17,8 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>MedAI - Advanced Medical AI Platform</title>
-        <meta name="description" content="AI-powered medical assistance platform revolutionizing healthcare through advanced machine learning and clinical decision support." />
+        <title>NeuroVED - Advanced NeuroVEDical AI Platform</title>
+        <meta name="description" content="AI-powered NeuroVEDical assistance platform revolutionizing healthcare through advanced machine learning and clinical decision support." />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light">

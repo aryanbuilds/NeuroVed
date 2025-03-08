@@ -67,7 +67,7 @@ export default function TechnologyPage() {
           </h1>
           <p className="text-xl text-[#7886C7] max-w-3xl mx-auto">
             Explore the advanced technologies and infrastructure that power our
-            medical AI solutions.
+            NeuroVEDical AI solutions.
           </p>
         </motion.div>
 

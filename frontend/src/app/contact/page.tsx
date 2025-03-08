@@ -48,7 +48,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-xl text-[#7886C7] max-w-3xl mx-auto">
-            Have questions about our AI medical solutions? We're here to help.
+            Have questions about our AI NeuroVEDical solutions? We're here to help.
           </p>
         </motion.div>
 
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 <MapPin className="w-6 h-6 text-[#A9B5DF] mt-1" />
                 <div>
                   <h3 className="font-semibold text-[#2D336B]">Address</h3>
-                  <p className="text-[#7886C7]">123 Medical Center Dr.<br />Silicon Valley, CA 94025</p>
+                  <p className="text-[#7886C7]">123 NeuroVEDical Center Dr.<br />Silicon Valley, CA 94025</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 <Mail className="w-6 h-6 text-[#A9B5DF] mt-1" />
                 <div>
                   <h3 className="font-semibold text-[#2D336B]">Email</h3>
-                  <p className="text-[#7886C7]">contact@medai.com</p>
+                  <p className="text-[#7886C7]">contact@NeuroVED.com</p>
                 </div>
               </div>
             </div>

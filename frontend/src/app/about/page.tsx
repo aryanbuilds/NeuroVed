@@ -23,7 +23,7 @@ export default function AboutPage() {
             Revolutionizing Healthcare Through AI
           </h1>
           <p className="text-xl text-[#7886C7] max-w-3xl mx-auto">
-            We're dedicated to transforming medical care by developing cutting-edge
+            We're dedicated to transforming NeuroVEDical care by developing cutting-edge
             AI solutions that enhance diagnosis accuracy, streamline workflows, and
             improve patient outcomes.
           </p>
@@ -42,7 +42,7 @@ export default function AboutPage() {
             <p className="text-[#7886C7]">
               To leverage artificial intelligence and machine learning technologies
               to create innovative solutions that address critical challenges in
-              healthcare delivery and medical research.
+              healthcare delivery and NeuroVEDical research.
             </p>
           </motion.div>
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
           >
             <h2 className="text-2xl font-bold text-[#2D336B] mb-4">Our Vision</h2>
             <p className="text-[#7886C7]">
-              To be at the forefront of medical AI innovation, creating a future
+              To be at the forefront of NeuroVEDical AI innovation, creating a future
               where advanced technology enhances healthcare accessibility,
               efficiency, and quality for everyone.
             </p>
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 icon: Brain,
                 title: 'Innovation',
                 description:
-                  'Pushing boundaries in AI and ML to develop groundbreaking medical solutions',
+                  'Pushing boundaries in AI and ML to develop groundbreaking NeuroVEDical solutions',
               },
               {
                 icon: Shield,
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 icon: Database,
                 title: 'Advanced Analytics',
                 description:
-                  'Sophisticated data processing capabilities for accurate medical insights',
+                  'Sophisticated data processing capabilities for accurate NeuroVEDical insights',
               },
               {
                 icon: Flask,

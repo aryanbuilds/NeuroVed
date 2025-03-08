@@ -55,7 +55,7 @@ const services = [
   {
     icon: Database,
     title: 'Smart Data Management',
-    description: 'Intelligent processing of medical records',
+    description: 'Intelligent processing of NeuroVEDical records',
     features: [
       'Automated data organization',
       'Secure storage and retrieval',
@@ -65,7 +65,7 @@ const services = [
   {
     icon: Shield,
     title: 'Security & Compliance',
-    description: 'Enterprise-grade security for medical data',
+    description: 'Enterprise-grade security for NeuroVEDical data',
     features: [
       'HIPAA compliance',
       'End-to-end encryption',

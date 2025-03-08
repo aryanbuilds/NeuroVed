@@ -25,7 +25,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
             <Brain className="h-8 w-8 text-[#2D336B]" />
-            <span className="ml-2 text-xl font-bold text-[#2D336B]">MedAI</span>
+            <span className="ml-2 text-xl font-bold text-[#2D336B]">NeuroVED</span>
           </Link>
 
           {/* Desktop navigation */}
@@ -35,7 +35,7 @@ const Navigation = () => {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-[#2D336B]",
+                  "text-sm font-NeuroVEDium transition-colors hover:text-[#2D336B]",
                   pathname === item.href
                     ? "text-[#2D336B]"
                     : "text-[#7886C7]"
@@ -76,7 +76,7 @@ const Navigation = () => {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block px-3 py-2 rounded-md text-base font-medium",
+                  "block px-3 py-2 rounded-md text-base font-NeuroVEDium",
                   pathname === item.href
                     ? "text-[#2D336B] bg-[#F3F4F9]"
                     : "text-[#7886C7] hover:text-[#2D336B] hover:bg-[#F3F4F9]"
