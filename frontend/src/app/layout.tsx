@@ -7,6 +7,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Toaster } from 'sonner';
 import { ClerkProvider } from '@/components/ClerkProvider';
+import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,6 +16,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isDashboard = pathname?.startsWith('/dashboard');
+
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
@@ -24,9 +28,9 @@ export default function RootLayout({
         </head>
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="light">
-            <Navigation />
+            {!isDashboard && <Navigation />}
             <main className="min-h-screen bg-background">{children}</main>
-            <Footer />
+            {!isDashboard && <Footer />}
             <Toaster />
           </ThemeProvider>
         </body>
