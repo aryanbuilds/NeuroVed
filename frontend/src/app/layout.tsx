@@ -1,7 +1,7 @@
 'use client';
 
-import './globals.css';
 import { Inter } from 'next/font/google';
+import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -25,6 +25,7 @@ export default function RootLayout({
         <head>
           <title>NeuroVED - Advanced NeuroVEDical AI Platform</title>
           <meta name="description" content="AI-powered NeuroVEDical assistance platform revolutionizing healthcare through advanced machine learning and clinical decision support." />
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
         </head>
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="light">
