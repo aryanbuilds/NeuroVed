@@ -1,5 +1,6 @@
 const { spawn } = require('child_process');
 const path = require('path');
+const { exec } = require('child_process');
 
 // Define paths
 const frontendPath = path.join(__dirname, 'frontend');
@@ -46,6 +47,30 @@ const segmentationServer = startServer(
   segmentationModelPath
 );
 
+// Open browser for Next.js frontend only
+setTimeout(() => {
+  const url = 'http://localhost:3000';
+  console.log(`Opening browser for ${url}...`);
+  
+  // Open browser based on platform
+  const platform = process.platform;
+  let command;
+  
+  if (platform === 'win32') {
+    command = `start ${url}`;
+  } else if (platform === 'darwin') {
+    command = `open ${url}`;
+  } else {
+    command = `xdg-open ${url}`;
+  }
+  
+  exec(command, (error) => {
+    if (error) {
+      console.error(`Failed to open browser: ${error}`);
+    }
+  });
+}, 3000); // Wait 3 seconds to ensure server is ready
+
 // Handle process termination
 process.on('SIGINT', () => {
   console.log('Shutting down servers...');
@@ -55,6 +80,6 @@ process.on('SIGINT', () => {
 });
 
 console.log('\nServers started:');
-console.log('- Next.js: http://localhost:3000');
-console.log('- 3D Segmentation Model: http://localhost:3001');
+console.log('- Next.js: http://localhost:3000 (opening in browser)');
+console.log('- 3D Segmentation Model: http://localhost:3001 (running in background)');
 console.log('\nPress Ctrl+C to stop all servers.\n'); 
