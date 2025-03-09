@@ -1,0 +1,24 @@
+{
+  "name": "niivue-brainchop",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3001 --no-open",
+    "build": "vite build",
+    "preview": "vite preview --port 3001 --no-open",
+    "test": "npx playwright test",
+    "pretest": "vite build"
+  },
+  "dependencies": {
+    "@niivue/niivue": "^0.43.5",
+    "@tensorflow/tfjs": "^4.20.0",
+    "gl-matrix": "^3.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.12",
+    "vite": "^2.7.13"
+  },
+  "homepage": "https://neuroneural.github.io/brainchop/"
+}

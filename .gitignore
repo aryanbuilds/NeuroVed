@@ -30,6 +30,6 @@ dist-ssr
 timing.json
 
 # 3D Segmentation Model
-/backend/3d_segmentation_model/
+# /backend/3d_segmentation_model/
 
 *.cmd
