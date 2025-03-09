@@ -40,8 +40,8 @@ npm start
 ```
 
 This will start:
-- Next.js frontend on http://localhost:3000
-- 3D Segmentation Model on http://localhost:3001
+- Next.js frontend on http://localhost:3000 (opens automatically in browser)
+- 3D Segmentation Model on http://localhost:3001 (runs in background)
 
 ### Option 2: Start Servers Individually
 
@@ -65,7 +65,7 @@ npm run start:gradio
 
 ## Accessing the Application
 
-1. Open your browser and go to `http://localhost:3000`
+1. The Next.js frontend will automatically open at `http://localhost:3000`
 2. Sign in using Clerk authentication
 3. Navigate to the dashboard to access:
    - Patient Management
