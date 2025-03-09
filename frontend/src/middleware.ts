@@ -11,8 +11,8 @@ const isPublicRoute = createRouteMatcher([
 export default clerkMiddleware(async (auth, req) => {
   if (isPublicRoute(req)) return;
 
-  const { protect } = await auth();
-  return protect();
+  const { userId } = await auth(); // 🔹 Await the auth() promise
+  if (!userId) return new Response("Unauthorized", { status: 401 });
 });
 
 export const config = {
