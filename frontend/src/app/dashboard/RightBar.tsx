@@ -15,7 +15,7 @@ const RightBar: React.FC<RightBarProps> = ({ activeView, setActiveView }) => {
       {/* Logo or Brand */}
       <div className="p-2">
         <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
-          D
+          NEuroDev
         </div>
       </div>
       
