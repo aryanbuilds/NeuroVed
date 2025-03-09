@@ -1,0 +1,21 @@
+{
+  "name": "dashdash",
+  "version": "1.0.0",
+  "description": "AI Doctor Dashboard with 3D Brain Segmentation",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start-servers.js",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:3d-model": "cd backend/3d_segmentation_model && npm run dev",
+    "start:gradio": "cd Ai_Doctor && python run_gradio_server.py"
+  },
+  "keywords": [
+    "ai",
+    "doctor",
+    "dashboard",
+    "3d",
+    "segmentation"
+  ],
+  "author": "",
+  "license": "MIT"
+} 

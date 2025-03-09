@@ -2,7 +2,7 @@
 
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home, Bell } from "lucide-react";
+import { Home, Bell, Brain } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -15,6 +15,7 @@ export default function Dashboard() {
   const { user, isLoaded } = useUser();
   const router = useRouter();
   const [gradioUrl, setGradioUrl] = useState("http://localhost:7860"); // Default Gradio URL
+  const [segmentationModelUrl, setSegmentationModelUrl] = useState("http://localhost:3001"); // 3D Segmentation Model URL
   
   // State for patients and appointments
   const [patients, setPatients] = useState<Patient[]>(initialPatients);
@@ -38,7 +39,7 @@ export default function Dashboard() {
             <h1 className="text-xl font-bold text-[#2D336B] ml-2">
               {activeView === "dash" && "Patient Dashboard"}
               {activeView === "ai" && "AI Doctor"}
-              {activeView === "data" && "Data Analytics"}
+              {activeView === "data" && "3D Brain Segmentation"}
             </h1>
           </div>
           <div className="flex items-center space-x-6">
@@ -66,7 +67,7 @@ export default function Dashboard() {
           <p className="text-[#7886C7]">
             {activeView === "dash" && "Manage your patients and appointments"}
             {activeView === "ai" && "Use AI to assist with diagnoses and treatments"}
-            {activeView === "data" && "View analytics and insights about your practice"}
+            {activeView === "data" && "Visualize and analyze 3D brain segmentation models"}
           </p>
         </div>
 
@@ -125,55 +126,65 @@ export default function Dashboard() {
             </Card>
           )}
 
-          {/* Data Analytics Section */}
+          {/* Data Analytics Section with 3D Segmentation Model */}
           {activeView === "data" && (
-            <Card className="shadow-md border-0">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
-                <CardTitle className="flex items-center">
-                  <span className="bg-blue-100 p-2 rounded-full mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                    </svg>
-                  </span>
-                  Data Analytics
-                </CardTitle>
-                <CardDescription>
-                  View and analyze patient data and trends
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-100 shadow-sm transition-transform hover:scale-105">
-                    <h3 className="text-lg font-semibold mb-2 text-blue-800">Total Patients</h3>
-                    <p className="text-3xl font-bold text-blue-900">{patients.length}</p>
-                    <p className="text-sm text-blue-600 mt-2">+2 this week</p>
+            <div className="space-y-6">
+              <Card className="shadow-md border-0">
+                <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+                  <CardTitle className="flex items-center">
+                    <span className="bg-blue-100 p-2 rounded-full mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+                      </svg>
+                    </span>
+                    3D Brain Segmentation Model
+                  </CardTitle>
+                  <CardDescription>
+                    Interactive 3D visualization for neurological analysis
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="w-full h-[700px] overflow-hidden">
+                    <iframe 
+                      src={segmentationModelUrl} 
+                      width="100%" 
+                      height="100%" 
+                      frameBorder="0"
+                      title="3D Brain Segmentation"
+                      className="w-full h-full"
+                    />
                   </div>
-                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-100 shadow-sm transition-transform hover:scale-105">
-                    <h3 className="text-lg font-semibold mb-2 text-purple-800">Total Reports</h3>
-                    <p className="text-3xl font-bold text-purple-900">
-                      {patients.reduce((sum, p) => sum + (p.reports ? p.reports.length : 0), 0)}
+                  <div className="p-4 bg-gray-50 border-t">
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 110 20 10 10 0 010-20z" />
+                      </svg>
+                      Make sure the 3D Segmentation Model server is running at {segmentationModelUrl}
                     </p>
-                    <p className="text-sm text-purple-600 mt-2">+5 this month</p>
                   </div>
-                  <div className="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-lg border border-green-100 shadow-sm transition-transform hover:scale-105">
-                    <h3 className="text-lg font-semibold mb-2 text-green-800">Total Appointments</h3>
-                    <p className="text-3xl font-bold text-green-900">{appointments.length}</p>
-                    <p className="text-sm text-green-600 mt-2">+3 this week</p>
-                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-100 shadow-sm transition-transform hover:scale-105">
+                  <h3 className="text-lg font-semibold mb-2 text-blue-800">Total Patients</h3>
+                  <p className="text-3xl font-bold text-blue-900">{patients.length}</p>
+                  <p className="text-sm text-blue-600 mt-2">+2 this week</p>
                 </div>
-                <div className="bg-white p-6 rounded-lg border shadow-sm">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Recent Activity
-                  </h3>
-                  <div className="space-y-4">
-                    <p className="text-gray-500 italic">No recent activity to display.</p>
-                  </div>
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-100 shadow-sm transition-transform hover:scale-105">
+                  <h3 className="text-lg font-semibold mb-2 text-purple-800">Brain Scans</h3>
+                  <p className="text-3xl font-bold text-purple-900">
+                    {patients.reduce((sum, p) => sum + (p.reports ? p.reports.length : 0), 0)}
+                  </p>
+                  <p className="text-sm text-purple-600 mt-2">+5 this month</p>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-lg border border-green-100 shadow-sm transition-transform hover:scale-105">
+                  <h3 className="text-lg font-semibold mb-2 text-green-800">Segmentation Models</h3>
+                  <p className="text-3xl font-bold text-green-900">12</p>
+                  <p className="text-sm text-green-600 mt-2">+3 this week</p>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>

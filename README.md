@@ -1,11 +1,12 @@
 # DashDash - AI Doctor Dashboard
 
-This project integrates a Next.js frontend dashboard with a Gradio-based AI Doctor application.
+This project integrates a Next.js frontend dashboard with a Gradio-based AI Doctor application and a 3D Brain Segmentation model.
 
 ## Project Structure
 
 - `frontend/` - Next.js frontend application with Clerk authentication
 - `Ai_Doctor/` - Python-based AI Doctor application using Gradio, Groq, and ElevenLabs
+- `backend/3d_segmentation_model/` - 3D Brain Segmentation model visualization
 
 ## Setup Instructions
 
@@ -13,88 +14,66 @@ This project integrates a Next.js frontend dashboard with a Gradio-based AI Doct
 
 - Node.js (v16+)
 - Python (v3.8+)
-- Pipenv (for Python dependency management)
+- FFmpeg (for audio processing)
 
 ### Environment Variables
 
 1. For the frontend (Next.js):
-   - Create a `.env.local` file in the `frontend/` directory with your Clerk API keys:
-   ```
-   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
-   CLERK_SECRET_KEY=your_secret_key
-   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-   NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
-   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
-   ```
-
+   - Create a `.env.local` file in the `frontend/` directory with your Clerk API keys
+   
 2. For the AI Doctor (Python):
-   - Set the following environment variables:
-   ```
-   GROQ_API_KEY=your_groq_api_key
-   ELEVENLABS_API_KEY=your_elevenlabs_api_key
-   ```
+   - Set up the `.env` file in the `Ai_Doctor/` directory with your Groq and ElevenLabs API keys
 
-### Running the Application
+## Running the Application
 
-#### Step 1: Start the Gradio Server
+### Option 1: Start All Servers at Once
 
-1. Navigate to the `Ai_Doctor` directory:
-   ```
-   cd Ai_Doctor
-   ```
+```bash
+# Install dependencies first
+npm install
+cd frontend && npm install
+cd backend/3d_segmentation_model && npm install
+cd Ai_Doctor && pip install -r requirements.txt
 
-2. Install dependencies:
-   ```
-   pipenv install
-   ```
+# Start all servers
+npm start
+```
 
-3. Activate the virtual environment:
-   ```
-   pipenv shell
-   ```
+This will start:
+- Next.js frontend on http://localhost:3000
+- 3D Segmentation Model on http://localhost:3001
 
-4. Run the Gradio server:
-   ```
-   python run_gradio_server.py
-   ```
+### Option 2: Start Servers Individually
 
-The Gradio server will start at `http://localhost:7860`.
+#### Start the Next.js Frontend
 
-#### Step 2: Start the Next.js Frontend
+```bash
+npm run start:frontend
+```
 
-1. Navigate to the `frontend` directory:
-   ```
-   cd frontend
-   ```
+#### Start the 3D Segmentation Model
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+```bash
+npm run start:3d-model
+```
 
-3. Run the development server:
-   ```
-   npm run dev
-   ```
+#### Start the Gradio Server
 
-The Next.js frontend will start at `http://localhost:3000`.
+```bash
+npm run start:gradio
+```
 
-#### Step 3: Access the Dashboard
+## Accessing the Application
 
 1. Open your browser and go to `http://localhost:3000`
 2. Sign in using Clerk authentication
-3. Navigate to the dashboard to access the AI Doctor interface
-
-## Features
-
-- Secure authentication with Clerk
-- AI Doctor with speech recognition and image analysis
-- Text-to-speech response from the AI Doctor
-- Modern dashboard interface
+3. Navigate to the dashboard to access:
+   - Patient Management
+   - AI Doctor (requires Gradio server running on port 7860)
+   - 3D Brain Segmentation (requires 3D model server running on port 3001)
 
 ## Troubleshooting
 
-- If the Gradio iframe doesn't load, ensure the Gradio server is running at `http://localhost:7860`
-- Check browser console for any CORS-related errors
-- Verify that all required API keys are set correctly in the environment variables 
+- If you encounter port conflicts, check that no other applications are using ports 3000, 3001, or 7860
+- For microphone issues with the AI Doctor, ensure your browser has permission to access the microphone
+- If FFmpeg is not installed, follow the installation instructions for your operating system 
