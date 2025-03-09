@@ -8,11 +8,11 @@ const isPublicRoute = createRouteMatcher([
   "/technology",
 ]);
 
-export default clerkMiddleware((auth, req) => {
-  if (isPublicRoute(req)) {
-    return;
-  }
-  return auth().protect();
+export default clerkMiddleware(async (auth, req) => {
+  if (isPublicRoute(req)) return;
+
+  const { protect } = await auth();
+  return protect();
 });
 
 export const config = {
