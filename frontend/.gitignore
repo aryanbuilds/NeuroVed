@@ -33,3 +33,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+// MODEL DEPLOYMENT
+
+/backend/3d_segmentation_model/
