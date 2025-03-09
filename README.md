@@ -26,21 +26,25 @@ This project integrates a Next.js frontend dashboard with a Gradio-based AI Doct
 
 ## Running the Application
 
-### Option 1: Start All Servers at Once
+### Initial Setup
 
 ```bash
-# Install dependencies first
+# Install dependencies
 npm install
 cd frontend && npm install
 cd backend/3d_segmentation_model && npm install
 cd Ai_Doctor && pip install -r requirements.txt
+```
 
+### Option 1: Start All Servers at Once
+
+```bash
 # Start all servers
 npm start
 ```
 
 This will start:
-- Next.js frontend on http://localhost:3000 (opens automatically in browser)
+- Next.js frontend on http://localhost:3000 (should open automatically in browser)
 - 3D Segmentation Model on http://localhost:3001 (runs in background)
 
 ### Option 2: Start Servers Individually
@@ -63,9 +67,19 @@ npm run start:3d-model
 npm run start:gradio
 ```
 
+### If the Browser Doesn't Open Automatically
+
+If the browser doesn't open automatically, you can manually open it with:
+
+```bash
+npm run open-browser
+```
+
+Or simply navigate to http://localhost:3000 in your browser.
+
 ## Accessing the Application
 
-1. The Next.js frontend will automatically open at `http://localhost:3000`
+1. The Next.js frontend should automatically open at `http://localhost:3000`
 2. Sign in using Clerk authentication
 3. Navigate to the dashboard to access:
    - Patient Management
@@ -76,4 +90,5 @@ npm run start:gradio
 
 - If you encounter port conflicts, check that no other applications are using ports 3000, 3001, or 7860
 - For microphone issues with the AI Doctor, ensure your browser has permission to access the microphone
-- If FFmpeg is not installed, follow the installation instructions for your operating system 
+- If FFmpeg is not installed, follow the installation instructions for your operating system
+- If the browser doesn't open automatically, run `npm run open-browser` or manually navigate to http://localhost:3000 

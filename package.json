@@ -4,10 +4,12 @@
   "description": "AI Doctor Dashboard with 3D Brain Segmentation",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm install open --no-save",
     "start": "node start-servers.js",
-    "start:frontend": "cd frontend && npm run dev",
+    "start:frontend": "npm install open --no-save && node frontend/start-frontend.js",
     "start:3d-model": "cd backend/3d_segmentation_model && npm run dev",
-    "start:gradio": "cd Ai_Doctor && python run_gradio_server.py"
+    "start:gradio": "cd Ai_Doctor && python run_gradio_server.py",
+    "open-browser": "npm install open --no-save && node open-browser.js"
   },
   "keywords": [
     "ai",
@@ -17,5 +19,8 @@
     "segmentation"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "open": "^8.4.2"
+  }
 } 
