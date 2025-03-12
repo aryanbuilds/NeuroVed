@@ -1,6 +1,6 @@
-# DashDash - AI Doctor Dashboard
+# NeuroVED - AI Doctor Dashboard
 
-This project integrates a Next.js frontend dashboard with a Gradio-based AI Doctor application and a 3D Brain Segmentation model.
+This project integrates a Next.js frontend dashboard with a TensorflowJS and Gradio based AI Doctor application and a 3D Brain Segmentation model.
 
 ## Project Structure
 
